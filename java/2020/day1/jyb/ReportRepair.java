@@ -24,6 +24,16 @@ public class ReportRepair {
 		catch (FileNotFoundException e) {
 		      System.out.println("An error occurred.");
 		}
+
+		for (int numberCompare1: list) {
+			for (int numberCompare2: list) {
+				if ((numberCompare1 + numberCompare2) == 2020) {
+						answer = numberCompare1 * numberCompare2;
+				}
+			}
+		}
+
+		System.out.println("Answer: " + answer);
 		
 		for (int numberBase: list) {
 			for (int numberCompare1: list) {
