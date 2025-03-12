@@ -10,8 +10,11 @@ public class SonarSweep {
 
 		ArrayList<Integer> list = new ArrayList<>();
 		int answer = 0;
+		int prev = 0;
         int curr = 0;
         int next = 0;
+		int currSum = 0;
+		int nextSum = 0;
 		
 		try {
 			File data = new File("C:\\SWE\\AdventOfCode\\resources\\2021\\day1_input.txt");
@@ -37,6 +40,23 @@ public class SonarSweep {
 
         System.out.println("Answer: " + answer);
 
-    }
+		answer = 0;
 
+		prev = list.get(0);
+        curr = list.get(1);
+		next = list.get(2);
+		currSum = prev + curr + next;
+        for (int i = 3; i < list.size(); i++) {
+            prev = curr;
+			curr = next;
+			next = list.get(i);
+			nextSum = prev + curr + next;
+            if (nextSum > currSum) {
+                answer++;
+            }
+            currSum = nextSum;
+        }
+
+        System.out.println("Answer: " + answer);
+    }
 }
