@@ -1,4 +1,5 @@
-## Advent Of Code
+# Advent Of Code
+This repository contains all my work done for the advent of code found at https://adventofcode.com
 
-# Coded in:
+## Currently Coded in:
 Java
