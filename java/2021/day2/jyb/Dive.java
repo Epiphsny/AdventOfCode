@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-// Author Justin Babineau jbabine1
+// Author Justin Babineau Epiphsny
 public class Dive {
     
     public static void main(String[] args) {

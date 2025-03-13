@@ -8,7 +8,7 @@ public class SonarSweep {
     
     public static void main(String[] args) {
 
-		ArrayList<Integer> list = new ArrayList<>();
+		ArrayList<Integer> list = new ArrayList<Integer>();
 		int answer = 0;
 		int prev = 0;
         int curr = 0;

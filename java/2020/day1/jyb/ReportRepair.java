@@ -3,12 +3,12 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// Author Justin Babineau jbabine1
+// Author Justin Babineau Epiphsny
 public class ReportRepair {
 
 	public static void main(String[] args) {
 
-		ArrayList<Integer> list = new ArrayList<>();
+		ArrayList<Integer> list = new ArrayList<Integer>();
 		int answer = 0;
 		
 		try {
