@@ -13,6 +13,7 @@ public class Dive {
         int horizontal = 0;
         int depth = 0;
         int answer;
+        int aim = 0;
 
         try {
 			File data = new File("C:\\SWE\\AdventOfCode\\resources\\2021\\day2_input.txt");
@@ -27,12 +28,13 @@ public class Dive {
                 value = Integer.parseInt("" + line.charAt(index+1));
                 if (command.compareTo("forward") == 0) {
                     horizontal += value;
+                    depth += (aim * value);
                 }
                 else if (command.compareTo("down") == 0) {
-                    depth += value;
+                    aim += value;
                 }
                 else if (command.compareTo("up") == 0) {
-                    depth -= value;
+                    aim -= value;
                 }
 		    }
 		    reader.close();
@@ -40,6 +42,10 @@ public class Dive {
 		catch (FileNotFoundException e) {
 		      System.out.println("An error occurred.");
 		}
+
+        answer = horizontal * aim;
+
+        System.out.println("Answer: " + answer);
 
         answer = horizontal * depth;
 
