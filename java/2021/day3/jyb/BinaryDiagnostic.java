@@ -14,6 +14,8 @@ public class BinaryDiagnostic {
         String epsilonRateBin = "";
         int gammaRate = 0;
         int epsilonRate = 0;
+        int oxygenRating = 0;
+        int co2Rating = 0;
         int dataLength = 0;
         int dataLines = 0;
 
@@ -53,12 +55,52 @@ public class BinaryDiagnostic {
             }
         }
 
-        for (int i = 0; i < dataLength; i++) {
-            gammaRate = Integer.parseInt(gammaRateBin, 2);
-            epsilonRate = Integer.parseInt(epsilonRateBin, 2);
-        }
+        gammaRate = Integer.parseInt(gammaRateBin, 2);
+        epsilonRate = Integer.parseInt(epsilonRateBin, 2);
 
         answer = gammaRate * epsilonRate;
+
+        System.out.println("Answer: " + answer);
+
+        ArrayList<String> listOxygen = new ArrayList<String>();
+        listOxygen.addAll(list);
+
+        for (int i = 0; i < dataLength; i++) {
+            for (int j = 0; j < listOxygen.size(); j++) {
+                if (listOxygen.get(j).charAt(i) != gammaRateBin.charAt(i)) {
+                    listOxygen.remove(j--);
+                }
+                if (listOxygen.size() == 1) {
+                    break;
+                }
+            }
+            if (listOxygen.size() == 1) {
+                break;
+            }
+        }
+
+        oxygenRating = Integer.parseInt(listOxygen.get(0), 2);
+
+        ArrayList<String> listCO2 = new ArrayList<String>();
+        listCO2.addAll(list);
+
+        for (int i = 0; i < dataLength; i++) {
+            for (int j = 0; j < listCO2.size(); j++) {
+                if (listCO2.get(j).charAt(i) != epsilonRateBin.charAt(i)) {
+                    listCO2.remove(j--);
+                }
+                if (listCO2.size() == 1) {
+                    break;
+                }
+            }
+            if (listCO2.size() == 1) {
+                break;
+            }
+        }
+
+        co2Rating = Integer.parseInt(listCO2.get(0), 2);
+
+        answer = oxygenRating * co2Rating;
 
         System.out.println("Answer: " + answer);
 
