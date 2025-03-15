@@ -10,9 +10,10 @@ public class HistorianHysteria {
         ArrayList<Integer> leftList = new ArrayList<Integer>();
         ArrayList<Integer> RightList = new ArrayList<Integer>();
         int distance = 0;
+        int similarity = 0;
 
         try {
-            File data = new File("C:\\SWE\\AdventOfCode\\resources\\2021\\day3_input.txt");
+            File data = new File("C:\\SWE\\AdventOfCode\\resources\\2024\\day1_input.txt");
             Scanner reader = new Scanner(data);
             while (reader.hasNextLine()) {
             	String line = reader.nextLine();
@@ -34,6 +35,16 @@ public class HistorianHysteria {
         }
 
         System.out.println("Total Distance: " + distance);
+
+        for (int i = 0; i < leftList.size(); i++) {
+            for (int j = 0; j < RightList.size(); j++) {
+                if ((int)leftList.get(i) == (int)RightList.get(j)) {
+                    similarity += leftList.get(i);
+                }
+            }
+        }
+
+        System.out.println("Similarity Score: " + similarity);
 
     }
 
