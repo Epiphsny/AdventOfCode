@@ -1,3 +1,5 @@
+package day1.jyb;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
