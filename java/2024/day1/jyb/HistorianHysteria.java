@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Author Justin Babineau Epiphsny
 public class HistorianHysteria {
     
     public static void main(String[] args) {

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+// Author Justin Babineau Epiphsny
 public class RedNosedReports {
     
     public static void main(String[] args) {
