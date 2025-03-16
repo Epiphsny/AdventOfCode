@@ -8,6 +8,7 @@ public class IWasToldThereWouldBeNoMath {
     public static void main(String[] args) {
 
         int smallest = 0;
+        int ribbon = 0;
         int sum = 0;
 
         try {
@@ -23,6 +24,7 @@ public class IWasToldThereWouldBeNoMath {
                 int wh = w * h;
                 int hl = h * l;
                 smallest = Math.min(lw, Math.min(wh, hl));
+                ribbon += l*w*h + Math.min(l+w, Math.min(w+h, h+l))*2;
                 sum += smallest + lw*2 + wh*2 + hl*2;
             }
             reader.close();
@@ -32,6 +34,7 @@ public class IWasToldThereWouldBeNoMath {
         }
 
         System.out.println("Total square feet of wrapping paper: " + sum);
+        System.out.println("Total feet of ribbon: " + ribbon);
 
     }
 
