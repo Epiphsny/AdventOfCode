@@ -1,5 +1,3 @@
-package day2.jyb;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
