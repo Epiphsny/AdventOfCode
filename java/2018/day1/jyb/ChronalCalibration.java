@@ -19,6 +19,7 @@ public class ChronalCalibration {
             Scanner reader = new Scanner(data);
             while (reader.hasNextLine()) {
             	String line = reader.nextLine();
+                frequencyChanges.add(line);
                 if (line.charAt(0) == '+') {
                     frequency += Integer.parseInt(line.substring(1));
                 }
@@ -35,36 +36,13 @@ public class ChronalCalibration {
         System.out.println("Final frequency: " + frequency);
 
         frequency = 0;
-        try {
-            File data = new File("C:\\SWE\\AdventOfCode\\resources\\2018\\day1_input.txt");
-            Scanner reader = new Scanner(data);
-            while (reader.hasNextLine() && !found) {
-            	String line = reader.nextLine();
-                if (frequencyChanges.contains(line)) {
-                    for (int i = 0; i < frequencyChanges.size(); i++) {
-                        if (frequencyChanges.get(i).charAt(0) == '+') {
-                            frequency += Integer.parseInt(frequencyChanges.get(i).substring(1));
-                        }
-                        else {
-                            frequency -= Integer.parseInt(frequencyChanges.get(i).substring(1));
-                        } 
-                        if (previousFrequencies.contains(frequency)) {
-                            frequencyTwice = frequency;
-                            found = true;
-                            break;
-                        }
-                        previousFrequencies.add(frequency);
-                    }
-                }
-                if (found) {
-                    break;
-                }
-                frequencyChanges.add(line);
-                if (line.charAt(0) == '+') {
-                    frequency += Integer.parseInt(line.substring(1));
+        while (!found) {
+            for (String change : frequencyChanges) {
+                if (change.charAt(0) == '+') {
+                    frequency += Integer.parseInt(change.substring(1));
                 }
                 else {
-                    frequency -= Integer.parseInt(line.substring(1));
+                    frequency -= Integer.parseInt(change.substring(1));
                 }
                 if (previousFrequencies.contains(frequency)) {
                     frequencyTwice = frequency;
@@ -73,10 +51,6 @@ public class ChronalCalibration {
                 }
                 previousFrequencies.add(frequency);
             }
-            reader.close();
-        } 
-        catch (FileNotFoundException e) {
-              System.out.println("An error occurred.");
         }
 
         System.out.println("Frequancy Found Twice: " + frequencyTwice);
