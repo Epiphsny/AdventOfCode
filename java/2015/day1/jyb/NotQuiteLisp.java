@@ -8,9 +8,11 @@ public class NotQuiteLisp {
     public static void main(String[] args) {
 
         int floor = 0;
+        int position = 0;
+        boolean basement = false;
 
         try {
-            File data = new File("C:\\SWE\\AdventOfCode\\resources\\2019\\day1_input.txt");
+            File data = new File("C:\\SWE\\AdventOfCode\\resources\\2015\\day1_input.txt");
             Scanner reader = new Scanner(data);
             while (reader.hasNextLine()) {
             	String line = reader.nextLine();
@@ -21,6 +23,10 @@ public class NotQuiteLisp {
                     else if (line.charAt(i) == ')') {
                         floor--;
                     }
+                    if (floor == -1 && !basement) {
+                        position = i + 1;
+                        basement = true;
+                    }
                 }
             }
             reader.close();
@@ -30,6 +36,7 @@ public class NotQuiteLisp {
         }
 
         System.out.println("Floor: " + floor);
+        System.out.println("Position: " + position);
 
     }
 
