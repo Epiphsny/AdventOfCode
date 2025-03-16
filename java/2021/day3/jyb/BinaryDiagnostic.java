@@ -17,7 +17,6 @@ public class BinaryDiagnostic {
         int oxygenRating = 0;
         int co2Rating = 0;
         int dataLength = 0;
-        int dataLines = 0;
 
         try {
             File data = new File("C:\\SWE\\AdventOfCode\\resources\\2021\\day3_input.txt");
@@ -27,7 +26,6 @@ public class BinaryDiagnostic {
                 dataLength = line.length();
                 list.add(line);
             }
-            dataLines = list.size();
             reader.close();
         } 
         catch (FileNotFoundException e) {
@@ -37,7 +35,7 @@ public class BinaryDiagnostic {
         int[] array = new int[dataLength];
 
         for (int i = 0; i < dataLength; i++) {
-            for (int j = 0; j < dataLines; j++) {
+            for (int j = 0; j < list.size(); j++) {
                 if (list.get(j).charAt(i) == '1') {
                     array[i]++;
                 }
@@ -45,7 +43,7 @@ public class BinaryDiagnostic {
         }
 
         for (int i = 0; i < dataLength; i++) {
-            if (array[i] > (dataLines / 2)) {
+            if (array[i] > (list.size() / 2)) {
                 gammaRateBin += "1";
                 epsilonRateBin += "0";
             }
@@ -62,6 +60,7 @@ public class BinaryDiagnostic {
 
         System.out.println("Answer: " + answer);
 
+        // Part 2
         ArrayList<String> listOxygen = new ArrayList<String>();
         listOxygen.addAll(list);
 
@@ -77,6 +76,23 @@ public class BinaryDiagnostic {
             if (listOxygen.size() == 1) {
                 break;
             }
+            array = new int[dataLength];
+            for (int j = 0; j < dataLength; j++) {
+                for (int k = 0; k < listOxygen.size(); k++) {
+                    if (listOxygen.get(k).charAt(j) == '1') {
+                        array[j]++;
+                    }
+                }
+            }
+            gammaRateBin = "";
+            for (int j = 0; j < dataLength; j++) {
+                if (array[j] >= (listOxygen.size() / 2)) {
+                    gammaRateBin += "1";
+                }
+                else {
+                    gammaRateBin += "0";
+                }
+            }
         }
 
         oxygenRating = Integer.parseInt(listOxygen.get(0), 2);
@@ -86,7 +102,7 @@ public class BinaryDiagnostic {
 
         for (int i = 0; i < dataLength; i++) {
             for (int j = 0; j < listCO2.size(); j++) {
-                if (listCO2.get(j).charAt(i) != epsilonRateBin.charAt(i)) {
+                if (listCO2.get(j).charAt(i) == gammaRateBin.charAt(i)) {
                     listCO2.remove(j--);
                 }
                 if (listCO2.size() == 1) {
@@ -95,6 +111,23 @@ public class BinaryDiagnostic {
             }
             if (listCO2.size() == 1) {
                 break;
+            }
+            array = new int[dataLength];
+            for (int j = 0; j < dataLength; j++) {
+                for (int k = 0; k < listCO2.size(); k++) {
+                    if (listCO2.get(k).charAt(j) == '1') {
+                        array[j]++;
+                    }
+                }
+            }
+            gammaRateBin = "";
+            for (int j = 0; j < dataLength; j++) {
+                if (array[j] > (listCO2.size() / 2)) {
+                    gammaRateBin += "1";
+                }
+                else {
+                    gammaRateBin += "0";
+                }
             }
         }
 
