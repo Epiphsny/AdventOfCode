@@ -16,14 +16,14 @@ public class InventoryManagementSystem {
         boolean found3;
 
         try {
-            File data = new File("C:\\SWE\\AdventOfCode\\resources\\2018\\day1_input.txt");
+            File data = new File("C:\\SWE\\AdventOfCode\\resources\\2018\\day2_input.txt");
             Scanner reader = new Scanner(data);
             while (reader.hasNextLine()) {
             	String line = reader.nextLine();
                 found2 = false;
                 found3 = false;
                 for (int i = 0; i < line.length(); i++) {
-                    letterPos = line.charAt(i) - 97;
+                    letterPos = ((int) line.charAt(i) - 97);
                     alphabet[letterPos]++;
                 }
                 for (int i = 0; i < alphabet.length; i++) {
